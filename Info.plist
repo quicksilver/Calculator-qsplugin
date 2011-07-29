@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>198</string>
+	<string>19E</string>
 	<key>QSActions</key>
 	<dict>
 		<key>CalculatorCalculateFormulaAction</key>
@@ -53,7 +53,11 @@
 			<string>Utility</string>
 		</array>
 		<key>description</key>
-		<string>Allows calculation of mathematical expressions with the Calculate action</string>
+		<string>&lt;h4&gt;Allows calculation of mathematical expressions with the Calculate action.&lt;/h4&gt;
+
+&lt;p&gt;Results can be displayed in one of 3 ways, and also copied to the clipboard.&lt;/p&gt;
+
+&lt;p&gt;Go to the &lt;a href="qs://preferences#QSSettingsPanePlaceholder"&gt;Preferences pane&lt;/a&gt; and select Calculator from the sidebar for more info.&lt;/p&gt;</string>
 		<key>infoFile</key>
 		<string>Info.rtf</string>
 		<key>webIcon</key>

@@ -8,7 +8,7 @@
 
 #import <QSInterface/QSPreferencePane.h>
 
-// Prefs strings used in the 
+// Strings used in com.quicksilver.plist prefs for storing the calculator settings
 #define kCalculatorDisplayPref @"CalculatorDisplayPref"
 #define kCalculatorCopyResultToClipboard @"CalculatorCopyResultToClipboard"
 
