@@ -9,14 +9,11 @@
 #import "CalculatorPrefPane.h"
 #import "CalculatorAction.h"
 
-NSString *CalculatorDisplayPref = @"Calculator Results Display";
-NSString *CalculatorEnginePref = @"CalculatorEngine";
-
 @implementation CalculatorPrefPane
 
 - (id) init {
 	if ((self = [super init])) {
-		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:CalculatorDisplayNormal], CalculatorDisplayPref, nil]];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:CalculatorDisplayNormal], kCalculatorDisplayPref, nil]];
 	}
 	return self;
 }

@@ -8,7 +8,9 @@
 
 #import <QSInterface/QSPreferencePane.h>
 
-extern NSString *CalculatorDisplayPref;
+// Prefs strings used in the 
+#define kCalculatorDisplayPref @"CalculatorDisplayPref"
+#define kCalculatorCopyResultToClipboard @"CalculatorCopyResultToClipboard"
 
 #define CalculatorDisplayNormal 0
 #define CalculatorDisplayLargeType 1
