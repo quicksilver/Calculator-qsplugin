@@ -8,7 +8,9 @@
 
 #import <QSInterface/QSPreferencePane.h>
 
-extern NSString *CalculatorDisplayPref;
+// Strings used in com.quicksilver.plist prefs for storing the calculator settings
+#define kCalculatorDisplayPref @"CalculatorDisplayPref"
+#define kCalculatorCopyResultToClipboard @"CalculatorCopyResultToClipboard"
 
 #define CalculatorDisplayNormal 0
 #define CalculatorDisplayLargeType 1
