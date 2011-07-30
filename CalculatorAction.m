@@ -32,7 +32,6 @@
 	
 	// Copy the result to the clipboard
 	if ([defaults objectForKey:kCalculatorCopyResultToClipboard] && [[defaults objectForKey:kCalculatorCopyResultToClipboard] boolValue]) {
-		NSLog(@"doing it");
 		NSPasteboard *pb = [NSPasteboard generalPasteboard];
 		[pb declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
 		[pb setString:outString forType:NSStringPboardType];
