@@ -17,7 +17,7 @@
 @implementation CalculatorActionProvider
 - (id) init {
 	if ((self = [super init])) {
-		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:CalculatorDisplayPref]];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:kCalculatorDisplayPref]];
 	}
 	return self;
 }
@@ -28,7 +28,17 @@
 	QSObject *result = [self performCalculation:dObject];
 	NSString *outString = [result objectForType:QSTextType];
 	
-	switch ([[[NSUserDefaults standardUserDefaults] objectForKey:CalculatorDisplayPref] intValue]) {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	// Copy the result to the clipboard
+	if ([defaults objectForKey:kCalculatorCopyResultToClipboard] && [[defaults objectForKey:kCalculatorCopyResultToClipboard] boolValue]) {
+		NSPasteboard *pb = [NSPasteboard generalPasteboard];
+		[pb declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:self];
+		[pb setString:outString forType:NSStringPboardType];
+	}
+	
+	
+	switch ([[defaults objectForKey:kCalculatorDisplayPref] intValue]) {
 		case CalculatorDisplayNormal:
 			// Do nothing - we're popping the result back up
 			break;
