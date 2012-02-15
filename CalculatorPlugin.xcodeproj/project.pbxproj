@@ -154,6 +154,9 @@
 /* Begin PBXProject section */
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = BB8B95730C24E834004C6479 /* Build configuration list for PBXProject "CalculatorPlugin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
