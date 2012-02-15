@@ -53,11 +53,26 @@
 			<string>Utility</string>
 		</array>
 		<key>description</key>
-		<string>&lt;h4&gt;Allows calculation of mathematical expressions with the Calculate action.&lt;/h4&gt;
+		<string>Allows calculation of mathematical expressions with the Calculate action.</string>
+		<key>extendedDescription</key>
+		<string>
+			&lt;h3&gt;Overview&lt;/h3&gt;
+			&lt;p&gt;The calculator module allows you to calculate mathematical expressions entered into Quicksilver with the 'Calculate' action.&lt;/p&gt;
+			&lt;p&gt;To calculate expressions you can run the 'Calculate' action on a text string, or put Quicksilver into 'Math' mode by type '='.
+			
+			&lt;h3&gt;Entering Expressions&lt;/h3&gt;
+			
+			Expressions are entered using the same syntax as Spotlight, for example:&lt;/p&gt;
+			&lt;ul&gt;
+				&lt;li&gt;=(sin(30))^2&lt;/li&gt;
+				&lt;li&gt;=e^4 + sqrt(50)&lt;/li&gt;
+				&lt;/ul&gt;
+				
+				&lt;h3&gt;Displaying Results&lt;/h3&gt;
 
-&lt;p&gt;Results can be displayed in one of 3 ways, and also copied to the clipboard.&lt;/p&gt;
+&lt;p&gt;Results from the 'Calculate' action can be displayed in one of 3 ways, and/or copied to the clipboard.&lt;/p&gt;
 
-&lt;p&gt;Go to the &lt;a href="qs://preferences#QSSettingsPanePlaceholder"&gt;Preferences pane&lt;/a&gt; and select Calculator from the sidebar for more info.&lt;/p&gt;</string>
+&lt;p&gt;Go to the &lt;a href="qs://preferences#QSSettingsPanePlaceholder"&gt;Preferences pane&lt;/a&gt; and select Calculator from the sidebar for more information and options on displaying results.&lt;/p&gt;</string>
 		<key>infoFile</key>
 		<string>Info.rtf</string>
 		<key>webIcon</key>
