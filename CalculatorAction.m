@@ -70,12 +70,17 @@
 - (QSObject *)performCalculation:(QSObject *)dObject {
 	
 	NSString *value;
+    
 	if ([[dObject primaryType] isEqualToString:QSFormulaType]) {
 		value = [dObject objectForType:QSFormulaType];
-		value = [[value componentsSeparatedByString:@"="] objectAtIndex:1];
 	} else {
 		value = [dObject objectForType:QSTextType];
 	}
+
+    // Remove leading '=' sign
+    if ([value length] && [value characterAtIndex:0] == [@"=" characterAtIndex:0]) {
+        value = [value stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@""];
+    }
 
     // Convert float separators
     NSLocale *locale = [NSLocale autoupdatingCurrentLocale];
