@@ -17,7 +17,10 @@
 @implementation CalculatorActionProvider
 - (id) init {
 	if ((self = [super init])) {
-		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:kCalculatorDisplayPref]];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                 [NSNumber numberWithInteger:CalculatorDisplayNormal], kCalculatorDisplayPref,
+                                                                 [NSNumber numberWithInteger:kQSCalculatorModeCalculate], kQSCalculatorMode,
+                                                                 nil]];
 	}
 	return self;
 }
@@ -38,7 +41,7 @@
 	}
 	
 	
-	switch ([[defaults objectForKey:kCalculatorDisplayPref] intValue]) {
+	switch ([[defaults objectForKey:kCalculatorDisplayPref] integerValue]) {
 		case CalculatorDisplayNormal:
 			// Do nothing - we're popping the result back up
 			break;
@@ -50,7 +53,8 @@
 			break;
 		} case CalculatorDisplayNotification: {
 			// Display result as notification
-			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[QSResourceManager imageNamed:@"com.apple.calculator"], QSNotifierIcon,
+			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [QSResourceManager imageNamed:@"com.apple.calculator"], QSNotifierIcon,
 										@"Calculation Result", QSNotifierTitle,
 										outString, QSNotifierText,
 										@"QSCalculatorResultNotification", QSNotifierType, nil];
@@ -72,38 +76,68 @@
 	} else {
 		value = [dObject objectForType:QSTextType];
 	}
-	
-	// Source taken from QSB (BELOW) See COPYING in the Resource folder for full copyright details
-	
-	// Fix up separators and decimals (for current user's locale). The Calculator framework wants
-    // '.' for decimals, and no grouping separators.
+
+    // Convert float separators
     NSLocale *locale = [NSLocale autoupdatingCurrentLocale];
     NSString *decimalSeparator = [locale objectForKey:NSLocaleDecimalSeparator];
-    NSString *groupingSeparator
-	= [locale objectForKey:NSLocaleGroupingSeparator];
-    NSMutableString *fixedQuery = [NSMutableString stringWithString:value];
-    [fixedQuery replaceOccurrencesOfString:groupingSeparator
-                                withString:@""
-                                   options:0
-                                     range:NSMakeRange(0, [fixedQuery length])];
-    [fixedQuery replaceOccurrencesOfString:decimalSeparator
-                                withString:@"."
-                                   options:0
-                                     range:NSMakeRange(0, [fixedQuery length])];
+    NSString *groupingSeparator = [locale objectForKey:NSLocaleGroupingSeparator];
+
+    value = [value stringByReplacingOccurrencesOfString:groupingSeparator
+                                             withString:@""
+                                                options:0
+                                                  range:NSMakeRange(0, [value length])];
+    value = [value stringByReplacingOccurrencesOfString:decimalSeparator
+                                             withString:@"."
+                                                options:0
+                                                  range:NSMakeRange(0, [value length])];
+
+    NSString *outString = nil;
+    QSCalculatorMode mode = kQSCalculatorModeCalculate;
+    NSNumber *modeNumber = [[NSUserDefaults standardUserDefaults] objectForKey:kQSCalculatorMode];
+    if (modeNumber)
+        mode = [[NSUserDefaults standardUserDefaults] integerForKey:kQSCalculatorMode];
+    switch (mode) {
+        case kQSCalculatorModeCalculate: {
+            // Source taken from QSB (BELOW) See COPYING in the Resource folder for full copyright details
+
+            // Fix up separators and decimals (for current user's locale). The Calculator framework wants
+            // '.' for decimals, and no grouping separators.
+
+            char answer[1024];
+            answer[0] = '\0';
+            int success	= CalculatePerformExpression((char *)[value UTF8String], 4, 1, answer);
+            if (!success) {
+                // calculation failed
+                return dObject;
+            }
+
+            outString = [NSString stringWithUTF8String:answer];
+            // Source taken from QSB Source Code (ABOVE)
+            break;
+        }
+        case kQSCalculatorModeBC: {
+            NSString *bcScript = [[NSArray arrayWithObjects:value, @"quit", @"", nil] componentsJoinedByString:@"\n"];
+            NSData *inputData = [bcScript dataUsingEncoding:NSUTF8StringEncoding];
+
+            NSTask *calculationTask = [NSTask taskWithLaunchPath:@"/usr/bin/bc" arguments:[NSArray arrayWithObjects:@"-q", @"-l", nil] input:inputData];
+            NSData *output = [calculationTask launchAndReturnOutput];
+
+            outString = [[[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding] autorelease];
+            outString = [outString trimWhitespace];
+            break;
+        }
+        case kQSCalculatorModeDC: {
+            NSString *dcScript = [[NSArray arrayWithObjects:value, @"p", @"", nil] componentsJoinedByString:@"\n"];
+
+            NSTask *calculationTask = [NSTask taskWithLaunchPath:@"/usr/bin/dc" arguments:[NSArray arrayWithObjects:@"-e", dcScript, nil]];
+            NSData *output = [calculationTask launchAndReturnOutput];
+
+            outString = [[[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding] autorelease];
+            outString = [outString trimWhitespace];
+            break;
+        }
+    }
 	
-    char answer[1024];
-    answer[0] = '\0';
-    int success
-	= CalculatePerformExpression((char *)[fixedQuery UTF8String],
-								 4, 1, answer);
-    if (!success) {
-		// calculation failed
-		return dObject;
-	}
-	
-	NSString *outString = [NSString stringWithUTF8String:answer];
-	
-	// Source taken from QSB Source Code (ABOVE)
 	
 	QSObject *result = [QSObject objectWithName:outString];
 	[result setObject:outString forType:QSTextType];
