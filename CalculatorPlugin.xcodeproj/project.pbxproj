@@ -26,11 +26,9 @@
 		14A8D03710CE4FDF003857E3 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		14A8D03810CE4FDF003857E3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		14A8D03910CE4FDF003857E3 /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
-		14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
-		14A8D03B10CE4FDF003857E3 /* QSPlugIn_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPlugIn_Prefix.pch; sourceTree = "<group>"; };
-		14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
 		14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		14A8D03E10CE4FDF003857E3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		4D19A1ED160A3911006E6592 /* Quicksilver.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6B8C9913C4F508004FF7BB /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		CD8F6F4813716D4C009F84D5 /* CalculatePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatePrivate.h; sourceTree = "<group>"; };
@@ -102,14 +100,13 @@
 				14A8D03710CE4FDF003857E3 /* Common.xcconfig */,
 				14A8D03810CE4FDF003857E3 /* Debug.xcconfig */,
 				14A8D03910CE4FDF003857E3 /* Developer.xcconfig */,
-				14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */,
-				14A8D03B10CE4FDF003857E3 /* QSPlugIn_Prefix.pch */,
-				14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */,
 				14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */,
+				4D19A1ED160A3911006E6592 /* Quicksilver.pch */,
 				14A8D03E10CE4FDF003857E3 /* Release.xcconfig */,
 			);
-			path = Configuration;
-			sourceTree = QS_SOURCE_ROOT;
+			name = Configuration;
+			path = /private/tmp/QS/Configuration;
+			sourceTree = "<absolute>";
 		};
 		CDF408C413C36284002F4793 /* Private */ = {
 			isa = PBXGroup;
@@ -229,7 +226,7 @@
 		};
 		4DB8398D0D13F41200A0CA18 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */;
+			baseConfigurationReference = 14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -243,7 +240,7 @@
 		};
 		BB8B95710C24E834004C6479 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */;
+			baseConfigurationReference = 14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
