@@ -16,6 +16,15 @@
 #define CalculatorDisplayLargeType 1
 #define CalculatorDisplayNotification 2
 
+#define kQSCalculatorMode @"CalculatorMode"
+
+enum QSCalculatorMode {
+    kQSCalculatorModeCalculate = 0,
+    kQSCalculatorModeBC,
+    kQSCalculatorModeDC,
+};
+typedef NSUInteger QSCalculatorMode;
+
 
 @interface CalculatorPrefPane : QSPreferencePane {}
 @end
