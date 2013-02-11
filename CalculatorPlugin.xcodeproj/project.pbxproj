@@ -10,6 +10,7 @@
 		0A61AF05067688D900A28BC8 /* CalculatorAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A61AF03067688D900A28BC8 /* CalculatorAction.m */; };
 		0A83260706B74EBA00F4F4EE /* CalculatorPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83260506B74EBA00F4F4EE /* CalculatorPrefPane.m */; };
 		0AB0246506D0356D0073A3CD /* Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0AB0246406D0356D0073A3CD /* Info.rtf */; };
+		4DDCEE7C16C9990B00A78048 /* Documentation.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 4DDCEE7B16C9990B00A78048 /* Documentation.mdown */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		CD6B8C9A13C4F508004FF7BB /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = CD6B8C9913C4F508004FF7BB /* COPYING */; };
 		CD8F6FD7137170A9009F84D5 /* Calculate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8F6FD6137170A9009F84D5 /* Calculate.framework */; };
@@ -26,17 +27,16 @@
 		14A8D03710CE4FDF003857E3 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		14A8D03810CE4FDF003857E3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		14A8D03910CE4FDF003857E3 /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
-		14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
-		14A8D03B10CE4FDF003857E3 /* QSPlugIn_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPlugIn_Prefix.pch; sourceTree = "<group>"; };
-		14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
 		14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		14A8D03E10CE4FDF003857E3 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		4D19A1ED160A3911006E6592 /* Quicksilver.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
+		4DDCEE7B16C9990B00A78048 /* Documentation.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Documentation.mdown; sourceTree = "<group>"; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD6B8C9913C4F508004FF7BB /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		CD8F6F4813716D4C009F84D5 /* CalculatePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatePrivate.h; sourceTree = "<group>"; };
 		CD8F6FD6137170A9009F84D5 /* Calculate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Calculate.framework; path = /System/Library/PrivateFrameworks/Calculate.framework; sourceTree = "<absolute>"; };
 		CD8F700313717271009F84D5 /* CalculatorPrefPane.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculatorPrefPane.xib; sourceTree = "<group>"; };
-		CDF408F413C36339002F4793 /* Calculator Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDF408F413C36339002F4793 /* Calculator Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculator Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +67,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DDCEE7B16C9990B00A78048 /* Documentation.mdown */,
 				0AB0246406D0356D0073A3CD /* Info.rtf */,
 				CD8F700313717271009F84D5 /* CalculatorPrefPane.xib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
@@ -102,14 +103,13 @@
 				14A8D03710CE4FDF003857E3 /* Common.xcconfig */,
 				14A8D03810CE4FDF003857E3 /* Debug.xcconfig */,
 				14A8D03910CE4FDF003857E3 /* Developer.xcconfig */,
-				14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */,
-				14A8D03B10CE4FDF003857E3 /* QSPlugIn_Prefix.pch */,
-				14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */,
 				14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */,
+				4D19A1ED160A3911006E6592 /* Quicksilver.pch */,
 				14A8D03E10CE4FDF003857E3 /* Release.xcconfig */,
 			);
-			path = Configuration;
-			sourceTree = QS_SOURCE_ROOT;
+			name = Configuration;
+			path = /private/tmp/QS/Configuration;
+			sourceTree = "<absolute>";
 		};
 		CDF408C413C36284002F4793 /* Private */ = {
 			isa = PBXGroup;
@@ -122,7 +122,7 @@
 		CDF408F513C36339002F4793 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CDF408F413C36339002F4793 /* Calculator Module.qsplugin */,
+				CDF408F413C36339002F4793 /* Calculator Plugin.qsplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,23 +130,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D5B49AC048680CD000E48DA /* Calculator Module */ = {
+		8D5B49AC048680CD000E48DA /* Calculator Plugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB8B956F0C24E834004C6479 /* Build configuration list for PBXNativeTarget "Calculator Module" */;
+			buildConfigurationList = BB8B956F0C24E834004C6479 /* Build configuration list for PBXNativeTarget "Calculator Plugin" */;
 			buildPhases = (
+				0A6B6F6406D152AD00205B03 /* Update version and documentation */,
 				8D5B49AF048680CD000E48DA /* Resources */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
-				0A6B6F6406D152AD00205B03 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Calculator Module";
+			name = "Calculator Plugin";
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = TSColloquyPlugin;
-			productReference = CDF408F413C36339002F4793 /* Calculator Module.qsplugin */;
+			productReference = CDF408F413C36339002F4793 /* Calculator Plugin.qsplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +172,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D5B49AC048680CD000E48DA /* Calculator Module */,
+				8D5B49AC048680CD000E48DA /* Calculator Plugin */,
 			);
 		};
 /* End PBXProject section */
@@ -185,24 +185,26 @@
 				0AB0246506D0356D0073A3CD /* Info.rtf in Resources */,
 				CD8F700413717271009F84D5 /* CalculatorPrefPane.xib in Resources */,
 				CD6B8C9A13C4F508004FF7BB /* COPYING in Resources */,
+				4DDCEE7C16C9990B00A78048 /* Documentation.mdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A6B6F6406D152AD00205B03 /* ShellScript */ = {
+		0A6B6F6406D152AD00205B03 /* Update version and documentation */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update version and documentation";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/bltrversion\" \"$INFOPLIST_FILE\"";
+			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -229,7 +231,7 @@
 		};
 		4DB8398D0D13F41200A0CA18 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A8D03C10CE4FDF003857E3 /* QSPlugIn_Release.xcconfig */;
+			baseConfigurationReference = 14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -237,13 +239,13 @@
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				INFOPLIST_PREPROCESS = NO;
-				PRODUCT_NAME = "Calculator Module";
+				PRODUCT_NAME = "Calculator Plugin";
 			};
 			name = Release;
 		};
 		BB8B95710C24E834004C6479 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A8D03A10CE4FDF003857E3 /* QSPlugIn_Debug.xcconfig */;
+			baseConfigurationReference = 14A8D03D10CE4FDF003857E3 /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -251,7 +253,7 @@
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks\"";
 				INFOPLIST_PREPROCESS = NO;
-				PRODUCT_NAME = "Calculator Module";
+				PRODUCT_NAME = "Calculator Plugin";
 			};
 			name = Debug;
 		};
@@ -266,7 +268,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB8B956F0C24E834004C6479 /* Build configuration list for PBXNativeTarget "Calculator Module" */ = {
+		BB8B956F0C24E834004C6479 /* Build configuration list for PBXNativeTarget "Calculator Plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB8B95710C24E834004C6479 /* Debug */,
