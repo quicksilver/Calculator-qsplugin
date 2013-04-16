@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A61AF05067688D900A28BC8 /* CalculatorAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A61AF03067688D900A28BC8 /* CalculatorAction.m */; };
 		0A83260706B74EBA00F4F4EE /* CalculatorPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83260506B74EBA00F4F4EE /* CalculatorPrefPane.m */; };
-		0AB0246506D0356D0073A3CD /* Info.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0AB0246406D0356D0073A3CD /* Info.rtf */; };
 		4DDCEE7C16C9990B00A78048 /* Documentation.mdown in Resources */ = {isa = PBXBuildFile; fileRef = 4DDCEE7B16C9990B00A78048 /* Documentation.mdown */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 		CD6B8C9A13C4F508004FF7BB /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = CD6B8C9913C4F508004FF7BB /* COPYING */; };
@@ -22,7 +21,6 @@
 		0A61AF04067688D900A28BC8 /* CalculatorAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorAction.h; sourceTree = "<group>"; };
 		0A83260406B74EBA00F4F4EE /* CalculatorPrefPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorPrefPane.h; sourceTree = "<group>"; };
 		0A83260506B74EBA00F4F4EE /* CalculatorPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorPrefPane.m; sourceTree = "<group>"; };
-		0AB0246406D0356D0073A3CD /* Info.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Info.rtf; sourceTree = "<group>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		14A8D03710CE4FDF003857E3 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		14A8D03810CE4FDF003857E3 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				4DDCEE7B16C9990B00A78048 /* Documentation.mdown */,
-				0AB0246406D0356D0073A3CD /* Info.rtf */,
 				CD8F700313717271009F84D5 /* CalculatorPrefPane.xib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				CD6B8C9913C4F508004FF7BB /* COPYING */,
@@ -182,7 +179,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB0246506D0356D0073A3CD /* Info.rtf in Resources */,
 				CD8F700413717271009F84D5 /* CalculatorPrefPane.xib in Resources */,
 				CD6B8C9A13C4F508004FF7BB /* COPYING in Resources */,
 				4DDCEE7C16C9990B00A78048 /* Documentation.mdown in Resources */,
