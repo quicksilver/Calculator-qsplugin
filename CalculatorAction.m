@@ -28,7 +28,7 @@
 
 - (QSObject *)calculate:(QSObject *)dObject {
 	
-	QSObject *result = [self performCalculation:dObject];
+	QSObject *result = [self performCalculation:dObject fromAction:YES];
 	NSString *outString = [result objectForType:QSTextType];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -67,7 +67,7 @@
 	return result;
 }
 
-- (QSObject *)performCalculation:(QSObject *)dObject {
+- (QSObject *)performCalculation:(QSObject *)dObject fromAction:(BOOL)fromAction {
 	
 	NSString *value;
     
@@ -121,7 +121,9 @@
             int success	= CalculatePerformExpression((char *)[value UTF8String], 20, 1, answer);
             if (!success) {
                 // calculation failed
-                QSShowAppNotifWithAttributes(@"calculator", NSLocalizedStringFromTableInBundle(@"Calculation failed", nil, [NSBundle bundleForClass:[self class]], @"title of the calculation failed notif"), [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Unable to calculate %@", nil, [NSBundle bundleForClass:[self class]], @"title of the calculation failed notif"), value]);
+                if (fromAction) {
+                    QSShowAppNotifWithAttributes(@"calculator", NSLocalizedStringFromTableInBundle(@"Calculation failed", nil, [NSBundle bundleForClass:[self class]], @"title of the calculation failed notif"), [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Unable to calculate %@", nil, [NSBundle bundleForClass:[self class]], @"title of the calculation failed notif"), value]);
+                }
                 return dObject;
             }
             
@@ -201,7 +203,7 @@
 
 - (BOOL)loadIconForObject:(QSObject *)object {
 	
-	QSObject *result = [self performCalculation:object];
+	QSObject *result = [self performCalculation:object fromAction:NO];
 	
 	// Still a formula object (i.e. there was a problem with the syntax) Use a clip icon
 	if ([[result primaryType] isEqualToString:QSFormulaType]) {
