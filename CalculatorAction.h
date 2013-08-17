@@ -11,5 +11,5 @@
 }
 
 - (QSObject *)calculate:(QSObject *)dObject;
-- (QSObject *)performCalculation:(QSObject *)dObject;
+- (QSObject *)performCalculation:(QSObject *)dObject fromAction:(BOOL)fromAction;
 @end

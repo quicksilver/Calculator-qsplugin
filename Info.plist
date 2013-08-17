@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.2</string>
+	<string>2.2.0</string>
 	<key>CFBundleVersion</key>
-	<string>211</string>
+	<string>225</string>
 	<key>QSActions</key>
 	<dict>
 		<key>CalculatorCalculateFormulaAction</key>
@@ -109,7 +109,7 @@ To calculate expressions you can run the 'Calculate' action on a text string, or
 	<key>QSRequirements</key>
 	<dict>
 		<key>version</key>
-		<string>3936</string>
+		<string>4001</string>
 	</dict>
 </dict>
 </plist>
