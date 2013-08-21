@@ -167,13 +167,13 @@
         ungrouped = outString;
         unichar ans[1024];
         NSMutableString *formatted_ans = [NSMutableString string];
-        [components[0] getCharacters:ans];
+        [[components objectAtIndex:0] getCharacters:ans];
         NSInteger i;
-        for (i  = [components[0] length] - 3; i >= 0; i = i-3) {
-            [formatted_ans prependFormat:@"%@%@", groupingSeparator, [components[0] substringWithRange:NSMakeRange(i, 3)]];
+        for (i  = [[components objectAtIndex:0] length] - 3; i >= 0; i = i-3) {
+            [formatted_ans prependFormat:@"%@%@", groupingSeparator, [[components objectAtIndex:0] substringWithRange:NSMakeRange(i, 3)]];
         }
         if (i != -3) {
-            [formatted_ans prependString:[components[0] substringWithRange:NSMakeRange(0, i+3)]];
+            [formatted_ans prependString:[[components objectAtIndex:0] substringWithRange:NSMakeRange(0, i+3)]];
         }
         if ([components count] > 1) {
             [formatted_ans appendFormat:@"%@%@", decimalSeparator, [components lastObject]];
@@ -185,12 +185,12 @@
     // Format the outstring to a certain number of decimal places
     if ([components count] > 1) {
         
-        NSInteger numberOfDecimalPlaces = 7 - ([components[0] length]);
+        NSInteger numberOfDecimalPlaces = 7 - ([[components objectAtIndex:0] length]);
         if (numberOfDecimalPlaces > 0) {
             NSUInteger decimalLength = numberOfDecimalPlaces > (NSInteger)[[components lastObject] length] ? [[components lastObject] length] : numberOfDecimalPlaces;
-            outString = [NSString stringWithFormat:@"%@.%@", groupedComponents[0], [[groupedComponents lastObject] substringWithRange:NSMakeRange(0, decimalLength)]];
+            outString = [NSString stringWithFormat:@"%@.%@", [groupedComponents objectAtIndex:0], [[groupedComponents lastObject] substringWithRange:NSMakeRange(0, decimalLength)]];
         } else {
-            outString = groupedComponents[0];
+            outString = [groupedComponents objectAtIndex:0];
         }
     }
     
