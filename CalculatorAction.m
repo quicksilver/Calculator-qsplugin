@@ -163,7 +163,7 @@
     NSArray *components = [outString componentsSeparatedByString:decimalSeparator];
     NSArray *groupedComponents = components;
     // format to use the grouping separator if the user used it in their original expression
-    if (usedGrouping && [outString length] > 3) {
+    if (usedGrouping && [[components objectAtIndex:0] length] > 3) {
         ungrouped = outString;
         unichar ans[1024];
         NSMutableString *formatted_ans = [NSMutableString string];
