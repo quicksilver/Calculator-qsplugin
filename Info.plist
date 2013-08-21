@@ -109,7 +109,7 @@ To calculate expressions you can run the 'Calculate' action on a text string, or
 	<key>QSRequirements</key>
 	<dict>
 		<key>version</key>
-		<string>4001</string>
+		<string>3936</string>
 	</dict>
 </dict>
 </plist>
