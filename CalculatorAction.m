@@ -188,7 +188,7 @@
         NSInteger numberOfDecimalPlaces = 7 - ([[components objectAtIndex:0] length]);
         if (numberOfDecimalPlaces > 0) {
             NSUInteger decimalLength = numberOfDecimalPlaces > (NSInteger)[[components lastObject] length] ? [[components lastObject] length] : numberOfDecimalPlaces;
-            outString = [NSString stringWithFormat:@"%@.%@", [groupedComponents objectAtIndex:0], [[groupedComponents lastObject] substringWithRange:NSMakeRange(0, decimalLength)]];
+            outString = [NSString stringWithFormat:@"%@%@%@", [groupedComponents objectAtIndex:0], decimalSeparator, [[groupedComponents lastObject] substringWithRange:NSMakeRange(0, decimalLength)]];
         } else {
             outString = [groupedComponents objectAtIndex:0];
         }
