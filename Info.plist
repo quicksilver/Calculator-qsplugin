@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.2.2</string>
 	<key>CFBundleVersion</key>
-	<string>22F</string>
+	<string>230</string>
 	<key>QSActions</key>
 	<dict>
 		<key>CalculatorCalculateFormulaAction</key>
@@ -59,8 +59,8 @@
 &lt;h2&gt;What is it?&lt;/h2&gt;
 &lt;p&gt;This plugin provides a built-in calculator for Quicksilver&lt;/p&gt;
 &lt;h2&gt;Overview&lt;/h2&gt;
-&lt;p&gt;The Calculator plugin allows you to calculate mathematical expressions entered into Quicksilver with the &apos;Calculate&apos; action.
-To calculate expressions you can run the &apos;Calculate&apos; action on a text string, or put Quicksilver into &apos;Math&apos; mode by typing &apos;=&apos;.&lt;/p&gt;
+&lt;p&gt;The Calculator plugin allows you to calculate mathematical expressions entered into Quicksilver with the 'Calculate' action.
+To calculate expressions you can run the 'Calculate' action on a text string, or put Quicksilver into 'Math' mode by typing '='.&lt;/p&gt;
 &lt;h3&gt;Entering Expressions&lt;/h3&gt;
 &lt;p&gt;Expressions are entered using the same syntax as Spotlight, for example:&lt;/p&gt;
 &lt;ul&gt;
@@ -68,10 +68,10 @@ To calculate expressions you can run the &apos;Calculate&apos; action on a text 
 &lt;li&gt;=e^4 + sqrt(50)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Displaying Results&lt;/h3&gt;
-&lt;p&gt;Results from the &apos;Calculate&apos; action can be displayed in one of 3 ways, and/or copied to the clipboard. See &apos;Calculator&apos; preferences.&lt;/p&gt;
+&lt;p&gt;Results from the 'Calculate' action can be displayed in one of 3 ways, and/or copied to the clipboard. See 'Calculator' preferences.&lt;/p&gt;
 &lt;h3&gt;Calculator Mode&lt;/h3&gt;
-&lt;p&gt;In the Calculator preferences you can also choose what calculator engine you wish to use. Currently only &lt;a href=&quot;x-man-page://bc&quot;&gt;&lt;code&gt;bc&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;x-man-page://dc&quot;&gt;&lt;code&gt;dc&lt;/code&gt;&lt;/a&gt; are provided.&lt;/p&gt;
-&lt;p&gt;Go to the &lt;a href=&quot;qs://preferences#CalculatorPrefPane&quot;&gt;Calculator Preferences pane&lt;/a&gt; for more information and options on displaying results.&lt;/p&gt;</string>
+&lt;p&gt;In the Calculator preferences you can also choose what calculator engine you wish to use. Currently only &lt;a href="x-man-page://bc"&gt;&lt;code&gt;bc&lt;/code&gt;&lt;/a&gt; and &lt;a href="x-man-page://dc"&gt;&lt;code&gt;dc&lt;/code&gt;&lt;/a&gt; are provided.&lt;/p&gt;
+&lt;p&gt;Go to the &lt;a href="qs://preferences#CalculatorPrefPane"&gt;Calculator Preferences pane&lt;/a&gt; for more information and options on displaying results.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.calculator</string>
 	</dict>
