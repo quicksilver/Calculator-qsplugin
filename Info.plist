@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.2.2</string>
 	<key>CFBundleVersion</key>
-	<string>233</string>
+	<string>234</string>
 	<key>QSActions</key>
 	<dict>
 		<key>CalculatorCalculateFormulaAction</key>
@@ -74,6 +74,8 @@ To calculate expressions you can run the 'Calculate' action on a text string, or
 &lt;p&gt;Go to the &lt;a href="qs://preferences#CalculatorPrefPane"&gt;Calculator Preferences pane&lt;/a&gt; for more information and options on displaying results.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.apple.calculator</string>
+		<key>recommended</key>
+		<true/>
 	</dict>
 	<key>QSRegistration</key>
 	<dict>
