@@ -169,7 +169,7 @@
         NSMutableString *formatted_ans = [NSMutableString string];
         [[components objectAtIndex:0] getCharacters:ans];
         NSInteger i;
-        for (i  = [[components objectAtIndex:0] length] - 3; i >= 0; i = i-3) {
+        for (i  = [[components objectAtIndex:0] length] - 3; i > 0; i = i-3) {
             [formatted_ans prependFormat:@"%@%@", groupingSeparator, [[components objectAtIndex:0] substringWithRange:NSMakeRange(i, 3)]];
         }
         if (i != -3) {
