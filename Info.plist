@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.blacktree.quicksilver.TSCalculatorPlugin</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.2.2</string>
 	<key>CFBundleVersion</key>
-	<string>234</string>
+	<string>236</string>
 	<key>QSActions</key>
 	<dict>
 		<key>CalculatorCalculateFormulaAction</key>
