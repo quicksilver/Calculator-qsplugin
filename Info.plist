@@ -107,6 +107,16 @@ To calculate expressions you can run the 'Calculate' action on a text string, or
 				<string>CalculatorPrefPane</string>
 			</dict>
 		</dict>
+		<key>QSTypeDefinitions</key>
+		<dict>
+			<key>QSFormulaType</key>
+			<dict>
+				<key>icon</key>
+				<string>com.apple.calculator</string>
+				<key>name</key>
+				<string>Calculator Formulas</string>
+			</dict>
+		</dict>
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
