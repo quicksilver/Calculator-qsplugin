@@ -131,7 +131,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB8B956F0C24E834004C6479 /* Build configuration list for PBXNativeTarget "Calculator Plugin" */;
 			buildPhases = (
-				0A6B6F6406D152AD00205B03 /* Update version and documentation */,
 				8D5B49AF048680CD000E48DA /* Resources */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
@@ -153,6 +152,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					8D5B49AC048680CD000E48DA = {
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = BB8B95730C24E834004C6479 /* Build configuration list for PBXProject "CalculatorPlugin" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -186,23 +190,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0A6B6F6406D152AD00205B03 /* Update version and documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update version and documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D5B49B1048680CD000E48DA /* Sources */ = {
