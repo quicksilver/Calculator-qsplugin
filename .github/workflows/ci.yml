@@ -142,10 +142,11 @@ jobs:
         security unlock-keychain -p "${KEYCHAIN_PASSWORD}" "${KEYCHAIN_PATH}"
 
         security import "${CERTIFICATE_PATH}" -P "${MACOS_CERTIFICATE_PASSWORD}" -A -t cert -f pkcs12 -k "${KEYCHAIN_PATH}"
-        codesign --force -vvv --deep --sign "${SIGNING_IDENTITY}" /tmp/QS/build/Release/"${{ env.PLUGIN_NAME }}"
+        codesign --force -vvv --deep --sign "${SIGNING_IDENTITY}" *.qsplugin
     - name: Archive signed plugin
       working-directory: /tmp/QS/build/Release
       run: |
+        set -x
         tar -czvf "${PLUGIN_NAME}.tar.gz" "${{ env.PLUGIN_NAME }}"
     - name: Upload document
       uses: actions/upload-artifact@v2
