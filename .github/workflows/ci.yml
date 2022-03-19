@@ -104,7 +104,7 @@ jobs:
     - name: Upload components for sign action
       uses: actions/upload-artifact@v2
       with:
-        name: UNSIGNED_${{ env.PLUGIN_NAME }}
+        name: UNSIGNED_PLUGIN
         path: /tmp/QS/build/Release/Quicksilver.app/Contents/PlugIns/${{ env.PLUGIN_NAME }}.tar.gz
 
   sign:
@@ -117,17 +117,15 @@ jobs:
 
       SIGNING_IDENTITY: ${{ secrets.SIGNING_IDENTITY }}
     steps:
-    - name: Download artifacts
+    - name: Download targz artifact
       uses: actions/download-artifact@v2
       with:
+        name: UNSIGNED_PLUGIN
         path: /tmp/QS/build/Release/
     - name: Unarchive artifact and set plugin name in env
       run: |
-        set -x
         cd /tmp/QS/build/Release
-        ls -l
-        file *
-        tar -xzvf UNSIGNED_*.tar.gz
+        tar -xzvf *.tar.gz
         rm -r *.tar.gz
 
         # Set env.PLUGIN_NAME for use in other steps
