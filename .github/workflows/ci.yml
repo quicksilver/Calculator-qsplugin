@@ -126,7 +126,8 @@ jobs:
         set -x
         cd /tmp/QS/build/Release
         ls -l
-        tar -xzvf *.tar.gz
+        file *
+        tar -xzvf UNSIGNED_*.tar.gz
         rm -r *.tar.gz
 
         # Set env.PLUGIN_NAME for use in other steps
