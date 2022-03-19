@@ -154,5 +154,5 @@ jobs:
     - name: Upload document
       uses: actions/upload-artifact@v2
       with:
-        name: SIGNED_PLUGIN
+        name: ${{ env.PLUGIN_NAME }}
         path: /tmp/QS/build/Release/${{ env.PLUGIN_NAME }}.tar.gz
