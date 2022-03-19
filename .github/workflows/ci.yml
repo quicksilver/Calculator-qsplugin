@@ -93,15 +93,14 @@ jobs:
         SETTINGS=$(xcodebuild "${opts[@]}" -showBuildSettings -json)
         xcodebuild build -quiet "${opts[@]}"
         PLUGIN_NAME=$(json '[0]["buildSettings"]["FULL_PRODUCT_NAME"]' <<< "${SETTINGS}")
-        set -x
+
         echo "PLUGIN_NAME=${PLUGIN_NAME}" >> $GITHUB_ENV
-        env
 
         log "Built ${PLUGIN_NAME} successfully"
     - name: Archive plugin
       working-directory: /tmp/QS/build/Release/Quicksilver.app/Contents/PlugIns/
       run: |
-        tar -czvf "${PLUGIN_NAME}.tar.gz" "${PLUGIN_NAME}"
+        tar -czvf "${{ env.PLUGIN_NAME }}.tar.gz" "${{ env.PLUGIN_NAME }}"
     - name: Upload components for sign action
       uses: actions/upload-artifact@v2
       with:
@@ -123,15 +122,18 @@ jobs:
       with:
         name: UNSIGNED_PLUGIN
         path: /tmp/QS/build/Release/
-    - name: Unarchive artifact
+    - name: Unarchive artifact and set plugin name in env
       run: |
         cd /tmp/QS/build/Release
         tar -xzvf *.tar.gz
         rm -r *.tar.gz
+
+        # Set env.PLUGIN_NAME for use in other steps
+        PLUGIN_NAME=$(find . -name '*.qsplugin' -exec basename {} \; -quit)
+        echo "PLUGIN_NAME=${PLUGIN_NAME}" >> $GITHUB_ENV
     - name: Sign plugin
       working-directory: /tmp/QS/build/Release/
       run: |
-        set -x
         # https://docs.github.com/en/actions/deployment/deploying-xcode-applications/installing-an-apple-certificate-on-macos-runners-for-xcode-development
         KEYCHAIN_PATH=${RUNNER_TEMP}/app-signing.keychain-db
         CERTIFICATE_PATH=${RUNNER_TEMP}/build_certificate.p12
@@ -148,8 +150,7 @@ jobs:
     - name: Archive signed plugin
       working-directory: /tmp/QS/build/Release
       run: |
-        set -x
-        tar -czvf "${PLUGIN_NAME}.tar.gz" "${{ env.PLUGIN_NAME }}"
+        tar -czvf "${{ env.PLUGIN_NAME }}.tar.gz" "${{ env.PLUGIN_NAME }}"
     - name: Upload document
       uses: actions/upload-artifact@v2
       with:
