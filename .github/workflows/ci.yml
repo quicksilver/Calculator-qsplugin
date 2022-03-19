@@ -123,7 +123,9 @@ jobs:
         path: /tmp/QS/build/Release/
     - name: Unarchive artifact and set plugin name in env
       run: |
+        set -x
         cd /tmp/QS/build/Release
+        ls -l
         tar -xzvf *.tar.gz
         rm -r *.tar.gz
 
