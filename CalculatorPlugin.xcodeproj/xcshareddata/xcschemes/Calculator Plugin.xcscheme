@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D5B49AC048680CD000E48DA"
-               BuildableName = "Calculator Plugin.qsplugin"
+               BuildableName = "Calculator Plugin.bundle"
                BlueprintName = "Calculator Plugin"
                ReferencedContainer = "container:CalculatorPlugin.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D5B49AC048680CD000E48DA"
-            BuildableName = "Calculator Plugin.qsplugin"
+            BuildableName = "Calculator Plugin.bundle"
             BlueprintName = "Calculator Plugin"
             ReferencedContainer = "container:CalculatorPlugin.xcodeproj">
          </BuildableReference>

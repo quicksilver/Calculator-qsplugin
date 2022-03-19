@@ -93,7 +93,9 @@ jobs:
         SETTINGS=$(xcodebuild "${opts[@]}" -showBuildSettings -json)
         xcodebuild build -quiet "${opts[@]}"
         PLUGIN_NAME=$(json '[0]["buildSettings"]["FULL_PRODUCT_NAME"]' <<< "${SETTINGS}")
+        set -x
         echo "PLUGIN_NAME=${PLUGIN_NAME}" >> $GITHUB_ENV
+        env
 
         log "Built ${PLUGIN_NAME} successfully"
     - name: Archive plugin
