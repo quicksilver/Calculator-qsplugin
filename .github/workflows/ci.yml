@@ -97,6 +97,9 @@ jobs:
         echo "PLUGIN_NAME=${PLUGIN_NAME}" >> $GITHUB_ENV
 
         log "Built ${PLUGIN_NAME} successfully"
+
+        # https://github.com/quicksilver/Quicksilver/issues/2634#issuecomment-1073286421
+        xattr -cr /tmp/QS/build/Release/Quicksilver.app/Contents/PlugIns/"${PLUGIN_NAME}"
     - name: Archive plugin
       working-directory: /tmp/QS/build/Release/Quicksilver.app/Contents/PlugIns/
       run: |
