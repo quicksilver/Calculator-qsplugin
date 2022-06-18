@@ -30,6 +30,8 @@
 - (QSObject *)calculate:(QSObject *)dObject {
 	
 	QSObject *result = [self performCalculation:dObject fromAction:YES];
+	[result setPrimaryType:QSFormulaType];
+	[result setIcon:[self iconForObject:result]];
 	NSString *outString = [result objectForType:QSTextType];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -214,83 +216,89 @@
 	return result;
 }
 
-- (BOOL)loadIconForObject:(QSObject *)object {
-	
+-(NSImage *)iconForObject:(QSObject *)object {
+	NSString *resultString = [object objectForType:QSTextType];
+	// Max icon size for the current command interface
+	NSSize maxIconSize = [[QSReg preferredCommandInterface] maxIconSize];
+	NSBitmapImageRep *bitmap = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
+																		pixelsWide:maxIconSize.width
+																		pixelsHigh:maxIconSize.height
+																	 bitsPerSample:8
+																   samplesPerPixel:4
+																		  hasAlpha:YES
+																		  isPlanar:NO
+																	colorSpaceName:NSCalibratedRGBColorSpace
+																	  bitmapFormat:0
+																	   bytesPerRow:0
+																	  bitsPerPixel:0]
+								autorelease];
+	if(bitmap) {
+		NSGraphicsContext *graphicsContext = [NSGraphicsContext graphicsContextWithBitmapImageRep:bitmap];
+		if(graphicsContext){
+			
+			// Sort The text format
+			NSData *data = [[NSUserDefaultsController sharedUserDefaultsController] valueForKeyPath:@"values.QSAppearance1T"];
+			NSColor *textColor = [NSUnarchiver unarchiveObjectWithData:data];
+			
+			// Text font size
+			int size;
+			NSSize textSize;
+			NSFont *textFont;
+			for (size = 12; size<300; size = size+2) {
+				textFont = [NSFont boldSystemFontOfSize:size+1];
+				textSize = [resultString sizeWithAttributes:[NSDictionary dictionaryWithObject:textFont forKey:NSFontAttributeName]];
+				if (textSize.width> maxIconSize.width - 20 || textSize.height > maxIconSize.height - 20) {
+					break;
+				}
+			}
+			
+			// Text shadow
+			NSShadow *textShadow = [[NSShadow alloc] init];
+			[textShadow setShadowOffset:NSMakeSize(5, -5)];
+			[textShadow setShadowBlurRadius:10];
+			[textShadow setShadowColor:[NSColor colorWithDeviceWhite:0 alpha:0.64]];
+			
+			NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:size-2],NSFontAttributeName,
+										textColor, NSForegroundColorAttributeName,
+										textShadow, NSShadowAttributeName, nil];
+			
+			
+			[NSGraphicsContext saveGraphicsState];
+			[NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithBitmapImageRep:bitmap]];
+			NSRect boundingRect = [resultString boundingRectWithSize:maxIconSize options:0 attributes:nil];
+			[resultString drawInRect:NSMakeRect(boundingRect.origin.x+(maxIconSize.width-textSize.width)/2, boundingRect.origin.y+(maxIconSize.height-textSize.height)/2, textSize.width, textSize.height) withAttributes:attributes];
+			[NSGraphicsContext restoreGraphicsState];
+			NSImage *icon = [[[NSImage alloc] initWithData:[bitmap TIFFRepresentation]] autorelease];
+			// release objects
+			[textShadow release];
+			return icon;
+		}
+	}
+	return nil;
+}
+- (void)setQuickIconForObject:(QSObject *)object {
+
 	QSObject *result = [self performCalculation:object fromAction:NO];
 	
 	// Still a formula object (i.e. there was a problem with the syntax) Use a clip icon
 	if ([[result primaryType] isEqualToString:QSFormulaType]) {
 		[object setIcon:[[NSWorkspace sharedWorkspace] iconForFileType:@"'clpt'"]];
-		return YES;
+		return;
 	}
 	// Use the result (a number) as the icon
 	else {
-		// Max icon size for the current command interface
-		NSSize maxIconSize = [[QSReg preferredCommandInterface] maxIconSize];
-		NSBitmapImageRep *bitmap = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
-																			pixelsWide:maxIconSize.width
-																			pixelsHigh:maxIconSize.height
-																		 bitsPerSample:8
-																	   samplesPerPixel:4
-																			  hasAlpha:YES
-																			  isPlanar:NO
-																		colorSpaceName:NSCalibratedRGBColorSpace
-																		  bitmapFormat:0
-																		   bytesPerRow:0
-																		  bitsPerPixel:0]
-									autorelease];
-		if(bitmap) {
-			NSGraphicsContext *graphicsContext = [NSGraphicsContext graphicsContextWithBitmapImageRep:bitmap];
-			if(graphicsContext){
+		NSImage *icon = [self iconForObject:result];
+		if (icon) {
+			[object setIcon:icon];
 
-				NSString *resultString = [result objectForType:QSTextType];
-
-				// Set the object's details to show the result
-				[object setDetails:resultString];
-				
-				// Sort The text format
-				NSData *data = [[NSUserDefaultsController sharedUserDefaultsController] valueForKeyPath:@"values.QSAppearance1T"];
-				NSColor *textColor = [NSUnarchiver unarchiveObjectWithData:data];
-	
-				// Text font size
-				int size;
-				NSSize textSize;
-				NSFont *textFont;
-				for (size = 12; size<300; size = size+2) {
-					textFont = [NSFont boldSystemFontOfSize:size+1];
-					textSize = [resultString sizeWithAttributes:[NSDictionary dictionaryWithObject:textFont forKey:NSFontAttributeName]];
-					if (textSize.width> maxIconSize.width - 20 || textSize.height > maxIconSize.height - 20) {
-						break;					
-					}
-				}
-				 
-				 // Text shadow
-				 NSShadow *textShadow = [[NSShadow alloc] init];
-				 [textShadow setShadowOffset:NSMakeSize(5, -5)];
-				 [textShadow setShadowBlurRadius:10];
-				 [textShadow setShadowColor:[NSColor colorWithDeviceWhite:0 alpha:0.64]];
-				 
-				NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[NSFont boldSystemFontOfSize:size-2],NSFontAttributeName,
-											textColor, NSForegroundColorAttributeName,
-											textShadow, NSShadowAttributeName, nil];
-				
-				
-				[NSGraphicsContext saveGraphicsState];
-				[NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithBitmapImageRep:bitmap]];
-				NSRect boundingRect = [[result stringValue] boundingRectWithSize:maxIconSize options:0 attributes:nil];
-				[resultString drawInRect:NSMakeRect(boundingRect.origin.x+(maxIconSize.width-textSize.width)/2, boundingRect.origin.y+(maxIconSize.height-textSize.height)/2, textSize.width, textSize.height) withAttributes:attributes];
-				[NSGraphicsContext restoreGraphicsState];
-				NSImage *icon = [[[NSImage alloc] initWithData:[bitmap TIFFRepresentation]] autorelease];
-				[object setIcon:icon];
-				
-				// release objects
-				[textShadow release];
-		
-				return YES;
-			}
+			// Set the object's details to show the result
+			NSString *resultString = [result objectForType:QSTextType];
+			[object setDetails:resultString];
+			
 		}
+		
 	}
-	return NO;
+	return;
 }
 
 @end
