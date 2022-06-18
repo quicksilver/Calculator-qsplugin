@@ -7,6 +7,7 @@
 
 #import <QSCore/QSLibrarian.h>
 #import <QSCore/QSNotifyMediator.h>
+#import <QSFoundation/QSGCD.h>
 #import "CalculatorAction.h"
 #import "CalculatorPrefPane.h"
 
@@ -47,8 +48,10 @@
 			break;
 		case CalculatorDisplayLargeType: {
 			// Display result as large type
-			QSShowLargeType(outString);
-			[[QSReg preferredCommandInterface] selectObject:result];
+			QSGCDMainSync(^{
+				QSShowLargeType(outString);
+				[[QSReg preferredCommandInterface] selectObject:result];
+			});
 			result = nil;
 			break;
 		} case CalculatorDisplayNotification: {
@@ -58,8 +61,10 @@
 										@"Calculation Result", QSNotifierTitle,
 										outString, QSNotifierText,
 										@"QSCalculatorResultNotification", QSNotifierType, nil];
-			QSShowNotifierWithAttributes(attributes);
-			[[QSReg preferredCommandInterface] selectObject:result];
+			QSGCDMainSync(^{
+				QSShowNotifierWithAttributes(attributes);
+				[[QSReg preferredCommandInterface] selectObject:result];
+			});
 			result = nil;
 		}
 	}
