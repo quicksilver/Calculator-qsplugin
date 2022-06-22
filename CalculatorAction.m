@@ -219,7 +219,7 @@
 -(NSImage *)iconForObject:(QSObject *)object {
  	NSString *resultString = [object objectForType:QSTextType];
 	// Max icon size for the current command interface
-	NSSize maxIconSize = [[QSReg preferredCommandInterface] maxIconSize];
+	NSSize maxIconSize = QSSize128;
 	NSBitmapImageRep *bitmap = [[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
 																		pixelsWide:maxIconSize.width
 																		pixelsHigh:maxIconSize.height
